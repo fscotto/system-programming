@@ -11,3 +11,6 @@ Welcome! This is a collection of chapter summaries from the book **Linux System 
 
 > Each file contains an English summary of the chapter's key concepts.
 
+## License
+
+This project is licensed under the [MIT License](./LICENSE).

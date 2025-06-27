@@ -1,4 +1,4 @@
-# Chapter 3 – Advanced File I/O
+# Chapter 4 – Advanced File I/O
 
 ## File Metadata and the `stat` Family
 - Use `stat()`, `fstat()`, `lstat()` to retrieve file metadata:

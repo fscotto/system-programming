@@ -1,42 +1,45 @@
 # Chapter 4 – Advanced File I/O
 
-## File Metadata and the `stat` Family
-- Use `stat()`, `fstat()`, `lstat()` to retrieve file metadata:
-  - File type, size, inode number, permissions, ownership, timestamps (atime, mtime, ctime).
-- The `stat` structure includes all these details.
+## Scatter/Gather I/O
+- Scatter/gather I/O allows reading or writing data to/from multiple buffers in a single system call.
+- Uses `readv()` and `writev()`:
+  - `readv(fd, iov, iovcnt)`: reads into multiple buffers (`iov` array).
+  - `writev(fd, iov, iovcnt)`: writes from multiple buffers.
+- Improves efficiency by reducing system calls.
 
-## File Types
-- Regular file, directory, symbolic link, character/block device, FIFO, socket.
-- Use macros like `S_ISREG()`, `S_ISDIR()` to test file types.
+## Event Poll (`select()`, `poll()`, `epoll`)
+- Traditional multiplexing: `select()`, `poll()` (limited scalability).
+- Linux-specific: `epoll` for efficient event notification.
+  - `epoll_create()`: create epoll instance.
+  - `epoll_ctl()`: control interest list (add, modify, remove fds).
+  - `epoll_wait()`: wait for events.
+- Edge-triggered vs level-triggered modes.
 
-## File Permissions and Modes
-- Represented by 12 bits (e.g., `rwxr-xr--`), plus sticky/SUID/SGID bits.
-- Manipulate with `chmod()`, `fchmod()`, `umask()`.
-- Ownership changed with `chown()` and `fchown()`.
+## Memory-Mapped Files (`mmap()`)
+- Maps files or devices into memory for direct access.
+- System calls: `mmap()`, `munmap()`.
+- Benefits: faster I/O, shared memory.
+- Use `msync()` to synchronize changes.
+- Resizing mappings, changing protections.
+- Advisory calls:
+  - `posix_fadvise()`: give advice about expected I/O patterns.
+  - `readahead()`: prefetch file data.
+- Pros and cons of memory mapping.
 
-## Links
-- **Hard links**: multiple filenames point to the same inode.
-- **Symbolic links**: separate files that reference other paths; can be broken.
-- Use `link()`, `unlink()`, `symlink()`, `readlink()`.
+## Asynchronous I/O and I/O Scheduling
+- Distinction between synchronous and asynchronous I/O.
+- Linux AIO APIs for asynchronous operations.
+- I/O schedulers:
+  - Manage disk request ordering.
+  - Examples: CFQ, noop, deadline.
+- Optimizing I/O performance by choosing schedulers.
+- Concepts of disk addressing and request life cycle.
 
-## Directories
-- Open with `opendir()`, read entries with `readdir()`.
-- Low-level: `getdents()` system call.
+## Miscellaneous
+- `ioctl()`: device-specific operations.
+- Zero-copy transfers: `sendfile()`, `splice()`.
 
-## File Timestamps
-- `utime()`, `utimes()`, `futimens()`, and `utimensat()` to update access/modification times.
+---
 
-## File Descriptors and Flags
-- Manipulate with `fcntl()`:
-  - Set non-blocking mode (`O_NONBLOCK`), FD_CLOEXEC flag, file locks.
-  - Duplicate with `dup()` and `dup2()`.
+> This chapter covers advanced Linux I/O techniques aimed at improving performance and flexibility in system programming.
 
-## File Locking
-- `flock()` for advisory locking (whole file).
-- `fcntl()` for POSIX record locking (ranges).
-
-## Temporary Files
-- `tmpfile()`, `mkstemp()` are safe methods to create temp files.
-
-## Summary
-- Chapter 3 focuses on extended file handling: metadata, links, directories, file modes, and advanced descriptor manipulation.

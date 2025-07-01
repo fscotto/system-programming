@@ -9,10 +9,11 @@ It copies the contents of one file into another, handling errors and signals saf
 
 ```
 mycp/
-├── mycp.c           # Main program source
-├── Makefile         # Build and test automation
-└── test/
-    └── run_tests.sh # Automated test and Valgrind report
+├── main.c               # Main program source
+├── Makefile             # Build and test automation
+├── generate_report.sh   # Generate test report in HTML
+├── test_mycp.sh         # Automated test
+├── valgrind_test.sh     # Execute Valgrind tests
 ```
 
 ---
@@ -25,16 +26,16 @@ To compile the program:
 make
 ```
 
-To clean up build files:
+To run valgrind test:
 
 ```bash
-make clean
+make valgrind
 ```
 
 To remove test artifacts as well:
 
 ```bash
-make distclean
+make clean
 ```
 
 ---

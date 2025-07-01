@@ -9,6 +9,7 @@ Welcome! This is a collection of chapter summaries from the book **Linux System 
 - [Chapter 3 – Buffered I/O](chp3/README.md)
 - [Chapter 4 – Advanced File I/O](chp4/README.md)
 - [Chapter 5 - Process Management](chp5/README.md)
+- [Exercises](exercises/README.md)
 
 > Each file contains an English summary of the chapter's key concepts.
 

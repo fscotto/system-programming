@@ -1,31 +1,34 @@
-#include <unistd.h>
 #include <stdio.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <unistd.h>
 
-int main(void) {
-    if (!fork())
-        return 1;
+int main(void)
+{
+	if (!fork())
+		return 1;
 
-    int status;
-    pid_t pid = wait(&status);
-    if (pid == -1) {
-        perror("wait");
-    }
+	int status;
+	pid_t pid = wait(&status);
+	if (pid == -1) {
+		perror("wait");
+	}
 
-    printf("pid=%d\n", pid);
-    
-    if (WIFEXITED(status))
-        printf("Normal termination with exit status=%d\n", WEXITSTATUS(status));
+	printf("pid=%d\n", pid);
 
-    if (WIFSIGNALED(status))
-        printf("Killed by signal=%d%s\n", WTERMSIG(status), WCOREDUMP(status) ? " (dumped core)" : "");
+	if (WIFEXITED(status))
+		printf("Normal termination with exit status=%d\n",
+		       WEXITSTATUS(status));
 
-    if (WIFSTOPPED(status))
-        printf("Stopped by signal=%d\n", WSTOPSIG(status));
+	if (WIFSIGNALED(status))
+		printf("Killed by signal=%d%s\n", WTERMSIG(status),
+		       WCOREDUMP(status) ? " (dumped core)" : "");
 
-    if (WIFCONTINUED(status))
-        printf("Continued\n");
+	if (WIFSTOPPED(status))
+		printf("Stopped by signal=%d\n", WSTOPSIG(status));
 
-    return 0;
+	if (WIFCONTINUED(status))
+		printf("Continued\n");
+
+	return 0;
 }

@@ -6,51 +6,56 @@
 #define _XOPEN_SOURCE 500
 #include <unistd.h>
 
-int main(void) {
-  printf("Try to open file read.txt\n");
-  int fd = open("read.txt", O_RDONLY);
-  if (fd == -1) {
-    perror("Failed to open read.txt");
-    return -1;
-  }
-  printf("Open file success\n");
+int main(void)
+{
+	printf("Try to open file read.txt\n");
+	int fd = open("read.txt", O_RDONLY);
+	if (fd == -1) {
+		perror("Failed to open read.txt");
+		return -1;
+	}
+	printf("Open file success\n");
 
-  int len;
-  // move file's cursor at the end of file and return bytes
-  if ((len = lseek(fd, 0, SEEK_END)) == -1) {
-    perror("Failed to move cursor at end of read.txt file");
-    return -1;
-  }
+	int len;
+	// move file's cursor at the end of file and return bytes
+	if ((len = lseek(fd, 0, SEEK_END)) == -1) {
+		perror("Failed to move cursor at end of read.txt file");
+		return -1;
+	}
 
-  // cannot rewind cursor at the start file because pread use "bytes_read_total" for position
+	// cannot rewind cursor at the start file because pread use
+	// "bytes_read_total" for position
 
-  printf("File size of %d bytes\n", len);
+	printf("File size of %d bytes\n", len);
 
-  printf("Reading file read.txt\n");
-  char buf[len + 1];
-  memset(buf, 0, sizeof(buf));
+	printf("Reading file read.txt\n");
+	char buf[len + 1];
+	memset(buf, 0, sizeof(buf));
 
-  size_t bytes_read_total = 0;
-  ssize_t ret;
-  while (bytes_read_total < len && (ret = pread(fd, buf, len - bytes_read_total, bytes_read_total)) != -1) {
-    if (ret == -1) {
-      if (errno == EINTR) continue;
-      perror("Failed to read read.txt");
-      break;
-    }
-    bytes_read_total += ret;
-  }
+	size_t bytes_read_total = 0;
+	ssize_t ret;
+	while (bytes_read_total < len &&
+	       (ret = pread(fd, buf, len - bytes_read_total,
+			    bytes_read_total)) != -1) {
+		if (ret == -1) {
+			if (errno == EINTR)
+				continue;
+			perror("Failed to read read.txt");
+			break;
+		}
+		bytes_read_total += ret;
+	}
 
-  buf[bytes_read_total] = '\0';
+	buf[bytes_read_total] = '\0';
 
-  printf("File text is:\n\"%s\"\n", buf);
+	printf("File text is:\n\"%s\"\n", buf);
 
-  printf("Close file read.txt\n");
-  
-  if (close(fd) == -1) {
-    perror("Failed to close read.txt");
-    return -1;
-  }
+	printf("Close file read.txt\n");
 
-  return 0;
+	if (close(fd) == -1) {
+		perror("Failed to close read.txt");
+		return -1;
+	}
+
+	return 0;
 }

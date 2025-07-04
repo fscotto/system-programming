@@ -1,7 +1,7 @@
-#include <stdio.h>
-#include <fcntl.h>
-#include <unistd.h>
 #include <errno.h>
+#include <fcntl.h>
+#include <stdio.h>
+#include <unistd.h>
 
 int main(void)
 {
@@ -20,7 +20,7 @@ int main(void)
 	if (fd == -1)
 		perror("Third open");
 	close(fd);
-	
+
 	fd = open("test.txt", O_CREAT);
 	if (fd == -1)
 		perror("Fourth open");

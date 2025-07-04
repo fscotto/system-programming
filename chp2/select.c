@@ -6,7 +6,8 @@
 #define TIMEOUT 5
 #define BUF_LEN 1024
 
-int main(void) {
+int main(void)
+{
 	struct timeval tv;
 	fd_set readfds;
 	int ret;
@@ -14,19 +15,13 @@ int main(void) {
 	/* Wait on stdin for intput. */
 	FD_ZERO(&readfds);
 	FD_SET(STDIN_FILENO, &readfds);
-	
+
 	/* Wait up to file seconds */
 	tv.tv_sec = TIMEOUT;
 	tv.tv_usec = 0;
 
 	/* All right, now block! */
-	ret = select(
-		STDIN_FILENO + 1,
-		&readfds,
-		NULL,
-		NULL,
-		&tv
-	);
+	ret = select(STDIN_FILENO + 1, &readfds, NULL, NULL, &tv);
 	if (ret == -1) {
 		perror("select");
 		return 1;
@@ -42,7 +37,7 @@ int main(void) {
 	 * nonzero, but we will humor ourselves.)
 	 */
 	if (FD_ISSET(STDIN_FILENO, &readfds)) {
-		char buf[BUF_LEN+1];
+		char buf[BUF_LEN + 1];
 		int len;
 
 		/* guaranteed to not block */
@@ -56,7 +51,7 @@ int main(void) {
 			buf[len] = '\0';
 			printf("read: %s\n", buf);
 		}
-		
+
 		return 0;
 	}
 

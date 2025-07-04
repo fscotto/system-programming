@@ -1,10 +1,11 @@
+#include <poll.h>
 #include <stdio.h>
 #include <unistd.h>
-#include <poll.h>
 
-#define TIMEOUT 5  /* poll timeout, in seconds */
+#define TIMEOUT 5 /* poll timeout, in seconds */
 
-int main(void) {
+int main(void)
+{
 	struct pollfd fds[2];
 	int ret;
 
@@ -30,7 +31,7 @@ int main(void) {
 
 	if (fds[0].revents & POLLIN)
 		printf("stdin is readable\n");
-	
+
 	if (fds[1].revents & POLLOUT)
 		printf("stdout is writable\n");
 

@@ -1,12 +1,13 @@
-#include <stdio.h>
-#include <sys/types.h>
-#include <sys/stat.h>
 #include <fcntl.h>
-#include <unistd.h>
+#include <stdio.h>
 #include <sys/mman.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <unistd.h>
 
-int main(int argc, char *argv[]) {
-	
+int main(int argc, char *argv[])
+{
+
 	if (argc < 2) {
 		fprintf(stderr, "usage: %s <file>\n", argv[0]);
 		return 1;

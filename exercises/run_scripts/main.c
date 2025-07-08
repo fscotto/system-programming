@@ -1,3 +1,9 @@
+/*
+ * SPDX-License-Identifier: MIT
+ * Copyright (c) 2025 Fabio Scotto di Santolo
+ */
+
+
 /* This program executes a sequence of Bash scripts
  * in sequential order. Each script is run in a child
  * process, and the parent prints the exit status.

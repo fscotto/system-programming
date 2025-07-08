@@ -1,3 +1,9 @@
+/*
+ * SPDX-License-Identifier: MIT
+ * Copyright (c) 2025 Fabio Scotto di Santolo
+ */
+
+
 #include <fcntl.h>
 #include <stdio.h>
 #include <sys/mman.h>

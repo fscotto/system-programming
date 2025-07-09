@@ -32,6 +32,21 @@ This is an organized list of all exercises completed so far, including a brief d
 
 ---
 
+## 🐚 run_scripts
+
+**Description**: A simple C program that sequentially executes one or more bash scripts, printing each script’s exit status.
+
+- 📄 [README](run_scripts/README.md)  
+- 📂 Directory: `run_scripts/`  
+- ✅ Features:  
+  - Uses `fork()` and `execlp()` to run each script in a child process  
+  - Waits for each child to finish before executing the next  
+  - Reports normal exit code or termination by signal  
+  - Includes example test scripts and memory checks with Valgrind  
+  - Makefile with targets: `build`, `run`, `test`, `valgrind`, and `clean`
+
+---
+
 ## 🔧 Tooling & Automation
 
 **Shared tools and scripts used across projects**:
@@ -41,4 +56,4 @@ This is an organized list of all exercises completed so far, including a brief d
 - Shell script for automated tests: `run_tests.sh`
 - Valgrind memory check reports generated automatically
 
-*Last updated: 2025-06-30*
+*Last updated: 2025-07-09*

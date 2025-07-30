@@ -47,6 +47,20 @@ This is an organized list of all exercises completed so far, including a brief d
 
 ---
 
+## 📥 downloader
+
+**Description**: A multi-threaded simulated file downloader implemented in C using POSIX threads (pthreads).
+
+- 📄 [README](downloader/README.md)  
+- 📂 Directory: `downloader/`  
+- ✅ Features:
+  - Each thread simulates downloading a file by printing periodic progress updates
+  - Synchronization using `pthread` APIs
+  - Demonstrates creation, execution, and joining of threads
+  - Makefile included with standard targets
+
+---
+
 ## 🔧 Tooling & Automation
 
 **Shared tools and scripts used across projects**:
@@ -56,4 +70,4 @@ This is an organized list of all exercises completed so far, including a brief d
 - Shell script for automated tests: `run_tests.sh`
 - Valgrind memory check reports generated automatically
 
-*Last updated: 2025-07-09*
+*Last updated: 2025-07-30*

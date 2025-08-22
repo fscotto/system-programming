@@ -4,15 +4,15 @@ Welcome! This is a collection of chapter summaries from the book **Linux System 
 
 ## Available Chapters
 
-- [Chapter 1 – Introduction and Core Concepts](chp1/README.md)
-- [Chapter 2 – File I/O](chp2/README.md)
-- [Chapter 3 – Buffered I/O](chp3/README.md)
-- [Chapter 4 – Advanced File I/O](chp4/README.md)
-- [Chapter 5 - Process Management](chp5/README.md)
-- [Chapter 6 - Advanced Process Management](chp6/README.md)
-- [Chapter 7 - Threading](chp7/README.md)
-- [Chapter 9 - Memory Management](chp9/README.md)
-- [Chapter 10 - Signals](chp10/README.md)
+- [Chapter 1 – Introduction and Core Concepts](01_Introduction/README.md)
+- [Chapter 2 – File I/O](02_FileIO/README.md)
+- [Chapter 3 – Buffered I/O](03_BufferedIO/README.md)
+- [Chapter 4 – Advanced File I/O](04_AdvancedFileIO/README.md)
+- [Chapter 5 - Process Management](05_ProcessManagement/README.md)
+- [Chapter 6 - Advanced Process Management](06_AdvancedProcessManagement/README.md)
+- [Chapter 7 - Threading](07_Threading/README.md)
+- [Chapter 9 - Memory Management](09_MemoryManagement/README.md)
+- [Chapter 10 - Signals](10_Signals/README.md)
 - [Exercises](exercises/README.md)
 
 > Each file contains an English summary of the chapter's key concepts.

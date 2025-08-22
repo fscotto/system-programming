@@ -75,6 +75,21 @@ This is an organized list of all exercises completed so far, including a brief d
 
 ---
 
+## 🚦 signal_handler
+
+**Description**: A C program demonstrating robust signal handling for `SIGINT` and `SIGUSR1` using `sigaction` with `SA_SIGINFO`.
+
+- 📄 [README](signal_handler/README.md)
+- 📂 Directory: `signal_handler/`
+- ✅ Features:
+  - Handles `SIGINT` up to three times before exiting
+  - Handles `SIGUSR1` with a simple message
+  - Masks signals during handler execution to avoid reentrancy issues
+  - Includes comments and clear separation of handler logic
+  - Makefile included with standard targets
+
+---
+
 ## 🔧 Tooling & Automation
 
 **Shared tools and scripts used across projects**:

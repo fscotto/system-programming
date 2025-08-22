@@ -12,6 +12,7 @@ Welcome! This is a collection of chapter summaries from the book **Linux System 
 - [Chapter 6 - Advanced Process Management](chp6/README.md)
 - [Chapter 7 - Threading](chp7/README.md)
 - [Chapter 9 - Memory Management](chp9/README.md)
+- [Chapter 10 - Signals](chp10/README.md)
 - [Exercises](exercises/README.md)
 
 > Each file contains an English summary of the chapter's key concepts.
